@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "908439874508",
+    "project_id": "carreseller-de2ce",
+    "storage_bucket": "carreseller-de2ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908439874508:android:9996bb50591ef239a4cb69",
+        "android_client_info": {
+          "package_name": "com.example.carreseller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "908439874508-jeg5rq6i3v2q4cg14jcnj99sbdhbos2o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDV039sLreOgJGwnEqOjosKrvqleI9D-Hs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "908439874508-jeg5rq6i3v2q4cg14jcnj99sbdhbos2o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
