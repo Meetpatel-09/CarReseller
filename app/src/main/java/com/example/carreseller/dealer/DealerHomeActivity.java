@@ -3,6 +3,7 @@ package com.example.carreseller.dealer;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -17,6 +18,7 @@ public class DealerHomeActivity extends AppCompatActivity {
 
     private Fragment selectorFragment;
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
