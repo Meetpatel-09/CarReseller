@@ -36,13 +36,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/edit_profile"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
-                    android:textSize="22sp"
-                    android:textColor="@color/colorAccent"
                     android:layout_toEndOf="@id/close"
-                    android:textStyle="bold"/>
+                    android:text="@string/edit_profile"
+                    android:textColor="@color/purple_500"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
@@ -70,7 +70,7 @@
             android:text="@string/change_photo"
             android:layout_gravity="center"
             android:textSize="18sp"
-            android:textColor="@color/colorPrimaryDark"/>
+            android:textColor="@color/purple_500"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/ep_full_name"

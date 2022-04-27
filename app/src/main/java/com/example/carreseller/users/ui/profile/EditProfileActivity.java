@@ -111,7 +111,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         HashMap<String, Object> map = new HashMap<>();
         map.put("name", fullName.getText().toString());
-        map.put("phone", mobileNumber.getText().toString());
+        map.put("mobile", mobileNumber.getText().toString());
 
         FirebaseDatabase.getInstance().getReference().child("Users").child(fUser.getUid()).updateChildren(map);
         Toast.makeText(this, "Profile Updated.", Toast.LENGTH_SHORT).show();
@@ -143,7 +143,7 @@ public class EditProfileActivity extends AppCompatActivity {
         pd.setMessage("Uploading");
         pd.show();
 
-        final StorageReference referenceForProfile = storage.getReference().child("Uusers")
+        final StorageReference referenceForProfile = storage.getReference().child("Users")
                 .child(fUser.getUid()).child("profile.jpeg");
 
         uploadTask = referenceForProfile.putFile(ImageUri);
@@ -162,6 +162,6 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void updateDatabase(String imageURL) {
-        FirebaseDatabase.getInstance().getReference().child("users").child(fUser.getUid()).child("imageUrl").setValue(imageURL);
+        FirebaseDatabase.getInstance().getReference().child("Users").child(fUser.getUid()).child("imageUrl").setValue(imageURL);
     }
 }

@@ -49,12 +49,10 @@ public class UserLogInActivity extends AppCompatActivity {
 
         tvAdminLogin.setOnClickListener(v -> {
             startActivity(new Intent(UserLogInActivity.this, AdminLogInActivity.class));
-            finish();
         });
 
         tvDealerLogin.setOnClickListener(v -> {
             startActivity(new Intent(UserLogInActivity.this, DealerLogInActivity.class));
-            finish();
         });
 
         btnLogin.setOnClickListener(v -> {

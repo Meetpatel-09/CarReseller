@@ -40,5 +40,13 @@
     <string name="change_photo">Change Photo</string>
     <string name="dealer_log_in">Dealer Log In</string>
     <string name="manage_dealer">Manage Dealer</string>
+    <string name="remove">Remove</string>
+    <string name="category_name">Categoey Name</string>
+    <string name="category">Category</string>
+    <string name="chat">Chats</string>
+    <string name="select_car_image">Select Car Image</string>
+    <string name="price">Price</string>
+    <string name="add_to_watch_list">Add to Watch List</string>
+    <string name="remove_from_watch_list">Remove from Watch List</string>
 
 </resources>

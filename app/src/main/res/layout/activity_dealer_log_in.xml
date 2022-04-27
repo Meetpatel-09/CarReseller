@@ -18,7 +18,7 @@
         android:text="@string/dealer_log_in"/>
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/email_d"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -29,7 +29,7 @@
         tools:ignore="Autofill" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/password_d"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -40,7 +40,7 @@
         tools:ignore="Autofill" />
 
     <Button
-        android:id="@+id/bt_login"
+        android:id="@+id/bt_login_d"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -49,5 +49,12 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_reg_d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/create_a_new_account" />
 
 </LinearLayout>

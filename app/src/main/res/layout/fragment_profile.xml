@@ -121,22 +121,7 @@
                     style="?android:attr/buttonBarButtonStyle"
                     android:contentDescription="@string/bookmarked" />
 
-                <ImageView
-                    android:id="@+id/uploaded"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/upload"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:contentDescription="@string/uploaded" />
-
             </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycle_view_uploaded"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycle_view_bookmarked"

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -17,6 +18,8 @@ import android.widget.TextView;
 
 import com.example.carreseller.R;
 import com.example.carreseller.StartActivity;
+import com.example.carreseller.adapter.CarsAdapter;
+import com.example.carreseller.models.CarsModel;
 import com.example.carreseller.models.UserModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,6 +29,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -33,17 +38,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProfileFragment extends Fragment {
 
     private RecyclerView recyclerViewSaved;
-//    private PhotoAdapter uploadAdapterSaved;
-//    private List<NewsUploads> myPhotoListSaved;
-
-
-    private RecyclerView recyclerView;
-//    private PhotoAdapter photoAdapter;
-//    private List<NewsUploads> myPhotoList;
+    private CarsAdapter carAdapter;
+    private List<CarsModel> list;
 
     private CircleImageView imageProfile;
     private TextView fullName;
-
 
     private FirebaseAuth auth;
 
@@ -61,29 +60,20 @@ public class ProfileFragment extends Fragment {
         ImageView logOut = view.findViewById(R.id.log_out);
         fullName = view.findViewById(R.id.full_name);
         ImageView bookmarked = view.findViewById(R.id.bookmarked);
-        ImageView uploaded = view.findViewById(R.id.uploaded);
         Button editProfile = view.findViewById(R.id.edit_profile);
-
-        recyclerView = view.findViewById(R.id.recycle_view_uploaded);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
-//        myPhotoList = new ArrayList<>();
-//        photoAdapter = new PhotoAdapter(getContext(), myPhotoList);
-//        recyclerView.setAdapter(photoAdapter);
 
         recyclerViewSaved = view.findViewById(R.id.recycle_view_bookmarked);
         recyclerViewSaved.setHasFixedSize(true);
-        recyclerViewSaved.setLayoutManager(new GridLayoutManager(getContext(), 3));
-//        myPhotoListSaved = new ArrayList<>();
-//        uploadAdapterSaved =new PhotoAdapter(getContext(), myPhotoListSaved);
-//        recyclerViewSaved.setAdapter(uploadAdapterSaved);
+        recyclerViewSaved.setLayoutManager(new LinearLayoutManager(getActivity()));
+        list = new ArrayList<>();
+        carAdapter = new CarsAdapter(getContext(), list);
+        recyclerViewSaved.setAdapter(carAdapter);
 
         profileId = Objects.requireNonNull(auth.getCurrentUser()).getUid();
 
         userInfo();
-//        getFollowingCount();
-//        myPhotos();
-//        getSavedPost();
+
+        getSavedCars();
 
         editProfile.setOnClickListener(v -> startActivity(new Intent(getContext(), EditProfileActivity.class)));
 
@@ -95,23 +85,52 @@ public class ProfileFragment extends Fragment {
         });
 
         recyclerViewSaved.setVisibility(View.VISIBLE);
-        recyclerView.setVisibility(View.GONE);
-
-        bookmarked.setOnClickListener(v -> {
-
-            recyclerViewSaved.setVisibility(View.VISIBLE);
-            recyclerView.setVisibility(View.GONE);
-
-        });
-
-        uploaded.setOnClickListener(v -> {
-
-            recyclerViewSaved.setVisibility(View.GONE);
-            recyclerView.setVisibility(View.VISIBLE);
-
-        });
 
         return view;
+    }
+
+    private void getSavedCars() {
+        final List<String> savedIds = new ArrayList<>();
+
+        FirebaseDatabase.getInstance().getReference().child("watchlist").child(profileId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    savedIds.add(dataSnapshot.getKey());
+                }
+
+                FirebaseDatabase.getInstance().getReference().child("Cars").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        list.clear();
+
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            CarsModel data = dataSnapshot.getValue(CarsModel.class);
+
+                            for (String id : savedIds) {
+                                assert data != null;
+                                if (data.getId().equals(id)) {
+                                    list.add(data);
+                                }
+                            }
+                        }
+
+                        carAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void userInfo() {

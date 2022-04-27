@@ -16,6 +16,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarReseller">
         <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CarInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".dealer.upload.UploadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".dealer.profile.EditProfile"
+            android:exported="false" />
+        <activity
+            android:name=".admin.category.RemoveCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.category.AddCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.DealerRegistrationActivity"
+            android:exported="false" />
+        <activity
             android:name=".authentication.DealerLogInActivity"
             android:exported="false" />
         <activity

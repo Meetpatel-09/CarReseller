@@ -22,7 +22,7 @@ public class StartActivity extends AppCompatActivity {
         super.onStart();
 
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            startActivity(new Intent(StartActivity.this, MainActivity.class));
+            startActivity(new Intent(StartActivity.this, UserLogInActivity.class));
         } else {
             startActivity(new Intent(StartActivity.this, UserLogInActivity.class));
         }
