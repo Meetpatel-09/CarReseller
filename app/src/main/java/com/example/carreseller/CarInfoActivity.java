@@ -123,12 +123,12 @@ public class CarInfoActivity extends AppCompatActivity {
         b_remove.setOnClickListener(view -> {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Are you sure you want to delete this book?");
+            builder.setMessage("Are you sure you want to delete this Car?");
             builder.setCancelable(true);
             builder.setPositiveButton("Yes", (dialog, which) -> {
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("books");
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Cars");
                 reference.child(c_id).removeValue().addOnCompleteListener(task -> {
-                    Toast.makeText(this, "Book Deleted Successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Car Deleted Successfully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(CarInfoActivity.this, DealerHomeActivity.class));
                     finish();
                 }).addOnFailureListener(ex -> Toast.makeText(this, "Something went wrong!!", Toast.LENGTH_SHORT).show());
