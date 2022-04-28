@@ -96,6 +96,7 @@ public class CarInfoActivity extends AppCompatActivity {
         category.setText(sCategory);
         company.setText(sCompany);
 //        s_name.setText(book_title);
+
         price.setText(p);
         fuelType.setText(fuel);
         seatingCapacity.setText(seats);
